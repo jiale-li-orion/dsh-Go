@@ -150,6 +150,7 @@ class _AppRow extends ConsumerWidget {
   }
 
   Future<void> _change(BuildContext context, WidgetRef ref, AppRule current, String label) async {
+    final l10n = context.l10n;
     final next = await showAppSheet<Object>(
       context,
       builder: (sheet) => SafeArea(
