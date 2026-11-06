@@ -108,6 +108,7 @@ void main() {
       const PhonePolicies(
         denyPackages: ['cmb.pb'],
         confirmEveryWritePackages: ['com.tencent.mm'],
+        imageFallbackPackages: ['com.tencent.mm'],
         labels: {'cmb.pb': '招商银行'},
       ),
     );
@@ -116,10 +117,11 @@ void main() {
     expect(native.callsOf('adbPair').single.arguments, {'code': '482913', 'port': 37123});
     expect(native.callsOf('adbConnect').single.arguments, {'port': 45269});
     expect(native.callsOf('actionLog').single.arguments, {'limit': 7});
-    // Only the two lists and the confirm mode go over the wire.
+    // Only the app lists and the confirm mode go over the wire.
     expect(native.callsOf('setPolicies').single.arguments, {
       'denyPackages': ['cmb.pb'],
       'confirmEveryWritePackages': ['com.tencent.mm'],
+      'imageFallbackPackages': ['com.tencent.mm'],
       'confirmMode': 'ask',
     });
   });
